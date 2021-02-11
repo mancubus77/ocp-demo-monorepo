@@ -23,7 +23,7 @@
     var myList = document.querySelector('ul');
 
     fetch('http://127.0.0.1:3030/v1/whoami')
-    .then(function(response) {  
+    .then(function(response) {
       if (!response.ok) {
         throw new Error("HTTP error, status = " + response.status);
       }
