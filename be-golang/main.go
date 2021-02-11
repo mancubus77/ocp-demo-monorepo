@@ -25,7 +25,7 @@ func whoAmI(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
-	fmt.Println("Starting Golang Web Server *:3030")
+	fmt.Println("Starting Go Web Server *:3030")
 	myRouter := mux.NewRouter().StrictSlash(true)
 	myRouter.Use(commonMiddleware)
 	myRouter.HandleFunc("/v1/whoami", whoAmI)
