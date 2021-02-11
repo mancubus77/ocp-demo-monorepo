@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/stankozlov/devel/ocp-demo-monorepo/be-rust/app/target/rls/debug/build/typenum-12a7b0865729ce1a/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/stankozlov/devel/ocp-demo-monorepo/be-rust/app/target/rls/debug/build/typenum-12a7b0865729ce1a/out/op.rs
