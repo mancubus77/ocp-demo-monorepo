@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: backend
+spec:
+  host: ocp-demo.apps.ocp4.digitaldovey.com
+  path: /
+  to:
+    kind: Service
+    name: ocp-demo
+  port:
+    targetPort: 3030
+  tls:
+    termination: edge

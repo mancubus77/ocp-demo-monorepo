@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocp-demo-frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+  - name: fe-ui-3030
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP

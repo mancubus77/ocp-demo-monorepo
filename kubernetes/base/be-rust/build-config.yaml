@@ -1,0 +1,21 @@
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: be-rust
+spec:
+  triggers:
+    - type: ConfigChange
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/mancubus77/ocp-demo-monorepo'
+      ref: main
+    contextDir: /be-rust
+  strategy:
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'ocp-demo:rust'

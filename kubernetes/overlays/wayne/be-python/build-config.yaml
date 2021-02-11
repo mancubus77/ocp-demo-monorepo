@@ -1,0 +1,25 @@
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: be-python
+spec:
+  triggers:
+    - type: ConfigChange
+    - type: "GitHub"
+      github:
+        secretReference:
+          name: "github"
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/mancubus77/ocp-demo-monorepo'
+      ref: main
+    contextDir: /be-python
+  strategy:
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'ocp-demo:python'

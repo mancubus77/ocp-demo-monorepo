@@ -1,0 +1,25 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: be-golang
+spec:
+  runPolicy: "Serial"
+  triggers:
+    - type: "ConfigChange"
+    - type: ImageChange
+    - type: "GitHub"
+      github:
+        secretReference:
+          name: "github"
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/mancubus77/ocp-demo-monorepo'
+      ref: main
+    contextDir: /be-golang
+  strategy:
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'ocp-demo:golang'

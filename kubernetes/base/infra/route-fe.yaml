@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: frontend
+spec:
+  host: ocp-demo-fe.apps.ocp4.rhpg.org
+  path: /
+  to:
+    kind: Service
+    name: ocp-demo-frontend
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
