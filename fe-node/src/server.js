@@ -4,7 +4,7 @@ var app = express();
 var os = require("os");
 var morgan  = require('morgan');
 const PORT = process.env.PORT || 8080;
-const URL = process.env.PORT || "http://127.0.0.1:3030/v1/whoami";
+const URL = process.env.URL || "http://127.0.0.1:3030/v1/whoami";
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
