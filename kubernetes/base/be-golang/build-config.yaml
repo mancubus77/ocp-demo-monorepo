@@ -1,0 +1,37 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: "be-golang"
+spec:
+  runPolicy: "Serial"
+  triggers:
+    - type: "ConfigChange"
+    - type: ImageChange
+  source:
+    type: Dockerfile
+    dockerfile: |-
+        FROM golang as builder
+        RUN apt-get update && apt-get install git make gcc linux-libc-dev\
+            && mkdir -p /build/monorepo
+
+        WORKDIR /build/monorepo
+        RUN git clone https://github.com/mancubus77/ocp-demo-monorepo /build/monorepo/ \
+            && cd /build/monorepo/be-golang \
+            && go build -o be-golang
+
+        FROM golang
+        RUN mkdir -p /app \
+            && mkdir -p /data \
+            && apt-get update && apt-get install gcc
+        WORKDIR /app
+        COPY --from=builder /build/monorepo/be-golang/be-golang .
+        ENTRYPOINT ["/app/be-golang"]
+
+    contextDir: /
+  strategy:
+    type: Docker
+    dockerStrategy: {}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'ocp-demo:golang'
