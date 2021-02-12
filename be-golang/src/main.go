@@ -34,7 +34,7 @@ func handleRequests() {
 	myRouter := mux.NewRouter().StrictSlash(true)
 	myRouter.Use(commonMiddleware)
 	myRouter.HandleFunc("/v1/whoami", whoAmI)
-	log.Fatal(http.ListenAndServe(":3032", myRouter))
+	log.Fatal(http.ListenAndServe(":3030", myRouter))
 }
 
 func commonMiddleware(next http.Handler) http.Handler {
