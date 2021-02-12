@@ -18,10 +18,15 @@ type ResponseBody struct {
 
 var ResponseBodyArr []ResponseBody
 
+var mem []byte
+
 func whoAmI(w http.ResponseWriter, r *http.Request) {
 	for _, article := range ResponseBodyArr {
 		json.NewEncoder(w).Encode(article)
 	}
+	s := make([]byte, 10<<20)
+	mem = append(mem, s...)
+	fmt.Println("I'm eating your memory: ", len(mem))
 }
 
 func handleRequests() {
