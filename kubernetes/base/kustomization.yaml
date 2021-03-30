@@ -1,6 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+<<<<<<< HEAD
 namespace: monorepo
+=======
+# namespace: ocp-demo
+>>>>>>> 6b21eabc9c180ee866d31ee00ea0bdf198409ccb
 resources:
 # Infra Tasks
 - infra/image-builder.yaml
