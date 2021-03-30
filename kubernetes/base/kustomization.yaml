@@ -21,4 +21,4 @@ resources:
   - infra/route-fe.yaml
   - infra/service.yaml
 
-namespace: ocp-demo
+# namespace: ocp-demo
