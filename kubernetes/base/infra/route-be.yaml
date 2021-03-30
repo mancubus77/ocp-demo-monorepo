@@ -3,12 +3,12 @@ kind: Route
 metadata:
   name: backend
 spec:
-  host: ocp-demo.apps.ocp4.rhpg.org
-  path: /
-  to:
-    kind: Service
-    name: ocp-demo
   port:
     targetPort: 3030
+  host: ocp-demo.apps.ocp4.rhpg.org
+  path: /
   tls:
     termination: edge
+  to:
+    name: ocp-demo
+    kind: Service

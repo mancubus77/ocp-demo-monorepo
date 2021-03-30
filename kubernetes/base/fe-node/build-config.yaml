@@ -1,21 +1,20 @@
----
-kind: BuildConfig
 apiVersion: build.openshift.io/v1
+kind: BuildConfig
 metadata:
   name: fe-node
 spec:
-  triggers:
-    - type: ConfigChange
-  runPolicy: Serial
-  source:
-    type: Git
-    git:
-      uri: 'https://github.com/mancubus77/ocp-demo-monorepo'
-      ref: main
-    contextDir: /fe-node
   strategy:
     type: Docker
   output:
     to:
-      kind: ImageStreamTag
       name: 'ocp-demo:fe-node'
+      kind: ImageStreamTag
+  runPolicy: Serial
+  source:
+    type: Git
+    contextDir: /fe-node
+    git:
+      ref: main
+      uri: 'https://github.com/mancubus77/ocp-demo-monorepo'
+  triggers:
+  - type: ConfigChange

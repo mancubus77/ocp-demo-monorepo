@@ -1,4 +1,3 @@
----
 apiVersion: v1
 kind: DeploymentConfig
 metadata:
@@ -7,35 +6,35 @@ metadata:
     app: backend
     lang: golang
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     app: backend
-  strategy:
-    type: Rolling
   template:
     metadata:
       labels:
         app: backend
         lang: golang
     spec:
+      restartPolicy: Always
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:golang
-        imagePullPolicy: Always
-        name: backend
+      - name: backend
+        image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:golang
         resources:
           limits:
-            memory: 128Mi
             cpu: 500m
-      restartPolicy: Always
+            memory: 128Mi
+        imagePullPolicy: Always
+  strategy:
+    type: Rolling
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
   triggers:
   - type: ConfigChange
-  - imageChangeParams:
+  - type: ImageChange
+    imageChangeParams:
       automatic: true
       containerNames:
       - backend
       from:
-        kind: ImageStreamTag
         name: ocp-demo:golang
-    type: ImageChange
+        kind: ImageStreamTag
