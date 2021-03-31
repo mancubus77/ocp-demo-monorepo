@@ -17,7 +17,6 @@ resources:
   - fe-node/deployment-config.yaml
   - fe-node/service.yaml
 # Infra Tasks
-  - infra/route-be.yaml
   - infra/route-fe.yaml
   - infra/service.yaml
 
