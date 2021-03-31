@@ -18,7 +18,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: backend
-        image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:golang
+        image: ocp-demo:golang
         resources:
           limits:
             cpu: 500m
