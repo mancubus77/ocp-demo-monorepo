@@ -16,7 +16,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: frontend
-        image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:golang
+        image: ocp-demo:fe-node
         env:
         - name: "URL"
           value: "http://ocp-demo:3030/v1/whoami"
