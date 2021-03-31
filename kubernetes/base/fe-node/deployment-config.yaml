@@ -19,7 +19,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:fe-node
+      - image: ocp-demo:fe-node
         imagePullPolicy: Always
         name: frontend
         resources:

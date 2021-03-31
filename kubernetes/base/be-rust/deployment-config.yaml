@@ -21,7 +21,7 @@ spec:
         lang: rust
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:rust
+      - image: ocp-demo:rust
         imagePullPolicy: Always
         name: backend
         resources:

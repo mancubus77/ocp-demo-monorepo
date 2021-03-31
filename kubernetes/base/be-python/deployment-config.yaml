@@ -21,7 +21,7 @@ spec:
         lang: python
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:golang
+      - image: ocp-demo:golang
         imagePullPolicy: Always
         name: backend
         resources:
