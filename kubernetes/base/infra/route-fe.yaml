@@ -3,7 +3,7 @@ kind: Route
 metadata:
   name: frontend
 spec:
-  host: ocp-demo-fe.apps.ocp4.rhpg.org
+  host: ocp-demo-fe
   path: /
   to:
     kind: Service
