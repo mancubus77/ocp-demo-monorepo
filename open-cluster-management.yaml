@@ -1,0 +1,55 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  namespace: monorepo
+  name: monorepo
+  annotations:
+    apps.open-cluster-management.io/deployables: ''
+  selfLink: /apis/app.k8s.io/v1beta1/namespaces/monorepo/applications/monorepo
+spec:
+  componentKinds:
+    - group: apps.open-cluster-management.io
+      kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - monorepo
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  namespace: monorepo
+  name: monorepo-subscription-1
+  annotations:
+    apps.open-cluster-management.io/deployables: >-
+      monorepo/monorepo-subscription-1-kubernetes-base-be-python-buildconfig,monorepo/monorepo-subscription-1-kubernetes-base-be-rust-buildconfig,monorepo/monorepo-subscription-1-kubernetes-base-ocp-demo-imagestream,monorepo/monorepo-subscription-1-kubernetes-base-be-golang-deploymentconfig,monorepo/monorepo-subscription-1-kubernetes-base-ocp-demo-frontend-service,monorepo/monorepo-subscription-1-kubernetes-base-ocp-demo-service,monorepo/monorepo-subscription-1-kubernetes-base-be-golang-buildconfig,monorepo/monorepo-subscription-1-kubernetes-base-frontend-route,monorepo/monorepo-subscription-1-kubernetes-base-be-python-deploymentconfig,monorepo/monorepo-subscription-1-kubernetes-base-frontend-deploymentconfig,monorepo/monorepo-subscription-1-kubernetes-base-fe-node-buildconfig,monorepo/monorepo-subscription-1-kubernetes-base-be-rust-deploymentconfig
+    apps.open-cluster-management.io/git-branch: acm
+    apps.open-cluster-management.io/git-path: kubernetes/base
+    apps.open-cluster-management.io/reconcile-option: replace
+  labels:
+    app: monorepo
+  selfLink: /apis/apps.open-cluster-management.io/v1/namespaces/monorepo/subscriptions/monorepo-subscription-1
+spec:
+  channel: ggithubcom-mancubus77-ocp-demo-monorepo-ns/ggithubcom-mancubus77-ocp-demo-monorepo
+  placement:
+    placementRef:
+      name: monorepo-placement-1
+      kind: PlacementRule
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  namespace: monorepo
+  name: monorepo-placement-1
+  annotations: {}
+  labels:
+    app: monorepo
+  selfLink: /apis/apps.open-cluster-management.io/v1/namespaces/monorepo/placementrules/monorepo-placement-1
+spec:
+  clusterConditions:
+    - status: 'True'
+      type: ManagedClusterConditionAvailable
+
