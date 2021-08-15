@@ -12,6 +12,9 @@ resources:
 # Rust
   - be-rust/build-config.yaml
   - be-rust/deployment-config.yaml
+# Quarkus
+  - be-quarkus/build-config.yaml
+  - be-quarkus/deployment-config.yaml
 # Frontend
   - fe-node/build-config.yaml
   - fe-node/deployment-config.yaml
