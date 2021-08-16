@@ -1,0 +1,17 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: ubi-quarkus-native-s2i
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: 21.0-java11
+      annotations: null
+      from:
+        kind: DockerImage
+        name: 'quay.io/quarkus/ubi-quarkus-native-s2i:21.0-java11'
+      generation: 4
+      importPolicy: {}
+      referencePolicy:
+        type: Source
