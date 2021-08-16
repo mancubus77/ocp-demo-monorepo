@@ -17,7 +17,7 @@ spec:
     sourceStrategy:
       from:
         kind: ImageStreamTag
-        name: 'ubi-quarkus-native-s2i:19.3.1-java11'
+        name: 'ubi-quarkus-native-s2i:21.0-java11'
   postCommit: {}
   source:
     type: Git
