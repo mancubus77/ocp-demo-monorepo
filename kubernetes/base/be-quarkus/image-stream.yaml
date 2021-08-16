@@ -12,6 +12,7 @@ spec:
         kind: DockerImage
         name: 'quay.io/quarkus/ubi-quarkus-native-s2i:21.0-java11'
       generation: 4
-      importPolicy: {}
+      importPolicy: 
+        scheduled: true
       referencePolicy:
         type: Source
