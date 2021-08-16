@@ -21,7 +21,7 @@ spec:
         lang: quarkus
     spec:
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/ocp-demo/ocp-demo:quarkus
+      - image: ocp-demo:quarkus
         imagePullPolicy: Always
         name: backend
         resources:
