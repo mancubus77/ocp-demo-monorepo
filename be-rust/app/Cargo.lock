@@ -809,6 +809,7 @@ dependencies = [
 name = "rest-example"
 version = "0.0.0"
 dependencies = [
+ "headers",
  "parking_lot",
  "serde",
  "tokio",

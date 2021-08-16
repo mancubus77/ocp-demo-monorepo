@@ -1,0 +1,29 @@
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: be-quarkus
+  namespace: monorepo
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'ocp-demo:quarkus'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'ubi-quarkus-native-s2i:19.3.1-java11'
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/mancubus77/ocp-demo-monorepo.git'
+    contextDir: be-quarkus
+  triggers:
+    - type: ConfigChange
+  runPolicy: Serial
