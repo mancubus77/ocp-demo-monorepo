@@ -13,6 +13,7 @@ resources:
   - be-rust/build-config.yaml
   - be-rust/deployment-config.yaml
 # Quarkus
+  - be-quarkus/image-stream.yaml
   - be-quarkus/build-config.yaml
   - be-quarkus/deployment-config.yaml
 # Frontend
