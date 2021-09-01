@@ -47,7 +47,7 @@ func commonMiddleware(next http.Handler) http.Handler {
 
 func main() {
 	ResponseBodyArr = []ResponseBody{
-		ResponseBody{App: "golang", Message: "I 💕 Golang."},
+		ResponseBody{App: "golang", Message: "I 💕 Golang, Go Gophers!"},
 	}
 	handleRequests()
 }
