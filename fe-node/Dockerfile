@@ -1,4 +1,4 @@
-FROM node
+FROM node:14-bullseye-slim
 ENV NODE_ENV=production
 WORKDIR /app
 COPY "./src/package.json" "./"
