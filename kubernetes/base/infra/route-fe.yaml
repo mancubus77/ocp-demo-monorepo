@@ -1,9 +1,9 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: frontend
+  name: ocp-demo-frontend
 spec:
-  host: ocp-demo-fe.apps.ocp4.rhpg.org
+  #host: ocp-demo-fe.apps.ocp4.rhpg.org
   path: /
   to:
     kind: Service
